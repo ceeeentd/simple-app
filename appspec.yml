@@ -5,6 +5,10 @@ files:
     destination: /var/www/html
 
 hooks:
+  BeforeInstall:
+    - location: scripts/clean_folder.sh
+      timeout: 30
+      runas: root
   ApplicationStart:
     - location: scripts/restart_apache.sh
       timeout: 60

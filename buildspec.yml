@@ -1,0 +1,24 @@
+version: 0.2
+
+phases:
+  pre_build:
+    commands:
+      - echo "Pre-build: verifying files"
+      - test -f appspec.yml
+      - test -f index.html
+      - test -d scripts
+      - chmod +x scripts/*.sh || true
+  build:
+    commands:
+      - echo "Nothing to build for static site"
+  post_build:
+    commands:
+      - echo "Packaging artifact for CodeDeploy"
+
+artifacts:
+  files:
+    - appspec.yml
+    - index.html
+    - scripts/**/*
+  discard-paths: no
+  name: build-$CODEBUILD_BUILD_ID

@@ -9,9 +9,11 @@ phases:
       - test -f index.html
       - test -d scripts
       - chmod +x scripts/*.sh || true
+
   build:
     commands:
       - echo "Nothing to build for static site"
+
   post_build:
     commands:
       - echo "Post-build: packaging artifact"

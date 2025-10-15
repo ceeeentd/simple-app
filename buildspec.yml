@@ -4,6 +4,7 @@ phases:
   pre_build:
     commands:
       - echo "Pre-build: verifying files"
+      - ls -la
       - test -f appspec.yml
       - test -f index.html
       - test -d scripts
@@ -13,7 +14,7 @@ phases:
       - echo "Nothing to build for static site"
   post_build:
     commands:
-      - echo "Packaging artifact for CodeDeploy"
+      - echo "Post-build: packaging artifact"
 
 artifacts:
   files:
